@@ -46,6 +46,16 @@ export const Form: IJsonForm[] = [
           { label: "Input 3", type: "text", name: "input3" },
         ],
       },
+      {
+        legend: "Teste multi",
+        name: "testMulti",
+        is_multiple: true,
+        fields: [
+          { label: "Input 1", type: "text", name: "multi_input1", validation: Yup.string().required('o campo lol é obrigatório') },
+          { label: "Input 2", type: "text", name: "multi_input2" },
+          { label: "Input 3", type: "text", name: "multi_input3" },
+        ],
+      },
     ],
   },
   {

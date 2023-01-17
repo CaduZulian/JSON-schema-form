@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { ApiFake } from "../../../services/api";
 
 // types
-import { IFormContext } from "./models";
+import { IFormContext, ISetStoragedData } from "./models";
 
 const FormContext = createContext({} as IFormContext);
 
@@ -57,7 +57,7 @@ const FormProvider = ({ children }: IFormProvider) => {
       const storagedData = localStorage.getItem("registrationForm")
         ? JSON.parse(localStorage.getItem("registrationForm")!)
         : {};
-      
+
       localStorage.setItem(
         "registrationForm",
         JSON.stringify({ ...storagedData, ...data })
@@ -67,6 +67,14 @@ const FormProvider = ({ children }: IFormProvider) => {
     }
 
     //if (!(validateForm(formRef, data, validations))) return
+  };
+
+  const getStoragedData = () => {
+    return JSON.parse(localStorage.getItem("registrationForm") ?? "{}");
+  };
+
+  const setStoragedData = (props: ISetStoragedData) => {
+    return localStorage.setItem("registrationForm", JSON.stringify(props));
   };
 
   return (
@@ -80,6 +88,8 @@ const FormProvider = ({ children }: IFormProvider) => {
         getCurrentForm,
         formRef,
         handleSubmit,
+        getStoragedData,
+        setStoragedData,
       }}
     >
       {children}

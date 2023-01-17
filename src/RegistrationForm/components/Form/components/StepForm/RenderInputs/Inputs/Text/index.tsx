@@ -14,7 +14,7 @@ interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   autoFocus?: boolean;
   disabled?: boolean;
   validation?: any;
-  fieldsetName: string;
+  fieldsetName?: string | null;
 }
 
 export const Text: React.FC<InputProps> = ({
@@ -30,7 +30,8 @@ export const Text: React.FC<InputProps> = ({
   const { formRef } = useForm();
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const { registerField, fieldName, defaultValue, error, clearError } = useField(name);
+  const { registerField, fieldName, defaultValue, error, clearError } =
+    useField(name);
 
   useEffect(() => {
     registerField({
@@ -47,15 +48,18 @@ export const Text: React.FC<InputProps> = ({
   const validateValue = async () => {
     if (validation) {
       try {
-        const schema = validation
+        const schema = validation;
 
         await schema.validate(inputRef.current?.value, { abortEarly: false });
 
-        error && clearError()
+        error && clearError();
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           err.inner.forEach((error) => {
-            formRef.current?.setFieldError(`${fieldsetName}.${name}`, error.message);
+            formRef.current?.setFieldError(
+              fieldsetName ? `${fieldsetName}.${name}` : name,
+              error.message
+            );
           });
         }
       }
