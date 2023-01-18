@@ -15,4 +15,8 @@ export const ButtonStyled = styled.button<{active: boolean}>`
   background-color: ${({active}) => active ? '#249175' : '#34d0a8'};
   color: #fff;
   height: fit-content;
+
+  :disabled {
+    opacity: 0.5;
+  }
 `;

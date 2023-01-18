@@ -3,7 +3,7 @@ import { FormHandles } from "@unform/core";
 
 export default async function validateForm(
   formRef: React.RefObject<FormHandles>,
-  data: { [key: string]: string },
+  data: Record<string, any> | undefined,
   validations: any
 ) {
   try {

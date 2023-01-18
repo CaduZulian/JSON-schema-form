@@ -8,10 +8,6 @@ interface IMultipleFieldset {
   fieldset: IFieldset;
 }
 
-interface IData {
-  [key: string]: { [key: string]: string }[];
-}
-
 export const MultipleFieldset = ({ fieldset }: IMultipleFieldset) => {
   // console.log("MultipleFieldset");
   // console.log(fieldset);

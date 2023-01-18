@@ -9,7 +9,7 @@ export const StepForm = () => {
 
   return (
     <FormStyled ref={formRef} onSubmit={() => {}}>
-      {getCurrentForm()?.fieldsets.map((fieldset) =>
+      {getCurrentForm()?.fieldsets && getCurrentForm().fieldsets.map((fieldset) =>
         fieldset.is_multiple ? (
           <MultipleFieldset key={fieldset.name} fieldset={fieldset} />
         ) : (

@@ -31,7 +31,7 @@ export const RenderInputs = ({
               }
               defaultValue={
                 type === "multiple" && inputIndex !== undefined
-                  ? storagedData?.[fieldsetName][inputIndex]?.[name]
+                  ? storagedData?.[fieldsetName]?.[inputIndex]?.[name]
                   : storagedData?.[fieldsetName]?.[name]
               }
               fieldsetName={type === "multiple" ? null : fieldsetName}

@@ -17,9 +17,10 @@ export interface IFormContext {
   JSONForm: any;
   getJSONForm: () => void;
   steps: string[];
+  stepsDisabled: boolean[];
   currentStep: string;
   changeCurrentStep: (step: string) => void;
-  getCurrentForm: () => IJsonForm | undefined;
+  getCurrentForm: () => IJsonForm;
   handleSubmit: () => void;
   getStoragedData: () => ISetStoragedData;
   setStoragedData: (props: ISetStoragedData) => void;
